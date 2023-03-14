@@ -28,8 +28,8 @@
 					result = request.responseText;
 					country = JSON.parse(result);
 					country = country[0].name.official;
-                    document.write("The official name for Peru is: " + country);
-                    document.write("<br />" + "<br />" + "Total JSON Output: " + "<br />" + "<br />" + result)
+                    document.write("Using Get Request:" + "<br />" + "<br />" + "The official name for Peru is: " + country);
+                    // document.write("<br />" + "<br />" + "Total JSON Output: " + "<br />" + "<br />" + result)
 					
 				}
 				else if (request.readyState == 4 && request.status != 200) {
@@ -50,6 +50,17 @@
 			console.log("4 - Request sent");
 		}
 	</script>
+    <script>
+        res = fetch("https://restcountries.com/v3.1/alpha/pe")
+        .then (res => res.text())
+        .then (data => 
+        {
+            data = JSON.parse(data)
+            data = data[0].name.official;
+            document.write("<br />" + "<br />" + "Using fetch:" + "<br />" + "<br />" + "The official name for Peru is '" + data + "'")
+        })
+        .catch (error => console.log(error))
+    </script>
 </head>
 
 
