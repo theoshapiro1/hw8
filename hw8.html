@@ -58,14 +58,38 @@
             data = JSON.parse(data)
             data = data[0].name.official;
             document.write("<br />" + "<br />" + "Using fetch:" + "<br />" + "<br />" + "The official name for Peru is '" + data + "'")
+
+            document.write("<br />" + "<br />" + "<br />" + "Answers to Questions:" + "<br />" + "<br />" + "1. The API I used is called REST Countries, and the point is to give the user detailed information about different countries.")
+            document.write("<br />" + "<br />")
+            var a = document.createElement('a');
+            var linkText = document.createTextNode("Website I Used");
+            a.appendChild(linkText);
+            document.write("2. ")
+            a.title = "Website I used";
+            a.href = "https://restcountries.com/#api-endpoints-v3-code";
+            document.body.appendChild(a);
+            document.write("<br />" + "<br />" + "3. The two options I used for the API request were 'get' and 'fetch.' The 'get' method creates a request object with a JSON file being the target of the request, and processes information asynchronously. The 'fetch' method is a javascript API that manipulates requests and responses.")
+            document.write("<br />" + "<br />" + "4. This API could be useful if (a) you want to quickly grab information about a country, or (b) you want to gather information about a country in their national language.")
+            
         })
         .catch (error => console.log(error))
     </script>
+    
 </head>
 
 
 <body onload="getCountry()">
     <h1>Peru</h1>
 	<div id="country">Loading...</div>
+
+    <script>
+        var a = document.createElement('a');
+        var linkText = document.createTextNode("my title text");
+        a.appendChild(linkText);
+        a.title = "my title text";
+        a.href = "http://example.com";
+        document.body.appendChild(a);
+    </script>
+    
 </body>
 </html>
