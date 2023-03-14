@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+	<title>REST COUNTRIES API GET</title>
+	<meta charset="utf-8"/>
+	<script>
+		function getCountry() {
+			/* Step 1: Make instance of request object...
+			...to make HTTP request after page is loaded*/
+			request = new XMLHttpRequest();
+			console.log("1 - request object created");
+ 
+			// Step 2: Set the URL for the AJAX request to be the JSON file
+ 
+		request.open("GET", "https://restcountries.com/v3.1/alpha/pe", true)
+
+			console.log("2 - opened request file");
+ 
+			// Step 3: set up event handler/callback
+
+			request.onreadystatechange = function() {
+				console.log("3 - readystatechange event fired.");
+ 
+				if (request.readyState == 4 && request.status == 200) {
+
+					// Step 5: wait for done + success
+					console.log("5 - response received");
+					result = request.responseText;
+					country = JSON.parse(result);
+					country = country[0].name.official;
+                    document.write("The official name for Peru is: " + country);
+                    document.write("<br />" + "<br />" + "Total JSON Output: " + "<br />" + "<br />" + result)
+					
+				}
+				else if (request.readyState == 4 && request.status != 200) {
+
+					document.getElementById("country").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
+
+				}
+
+				else if (request.readyState == 3) {
+
+					document.getElementById("country").innerHTML = "Too soon!  Try again";
+
+				}
+
+			}
+		// Step 4: fire off the HTTP request
+			request.send();
+			console.log("4 - Request sent");
+		}
+	</script>
+</head>
+
+
+<body onload="getCountry()">
+    <h1>Peru</h1>
+	<div id="country">Loading...</div>
+</body>
+</html>
