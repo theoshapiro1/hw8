@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+	<title>REST COUNTRIES API FETCH</title>
+	<meta charset="utf-8"/>
+	<script>
+        res = fetch("https://restcountries.com/v3.1/alpha/pe")
+        .then (res => res.text())
+        .then (data => 
+        {
+            data = JSON.parse(data)
+            data = data[0].name.official;
+            document.write("The official name for Peru is '" + data + "'")
+        })
+        .catch (error => console.log(error))
+    </script>
+</head>
+</html>
